@@ -27,7 +27,7 @@ module.exports = {
       emojiInfo.push(info);
       emojiIDs.push(id);
     });
-    const emojiURLs = emojiIDs.map( // emojiIDs is now an array of emoji URLs
+    const emojiURLs = emojiIDs.map(
       (i) => 'https://cdn.discordapp.com/emojis/' + i,
     );
 
@@ -48,18 +48,34 @@ module.exports = {
         .catch(console.error);
 
       for (let i = 0; i < emojiIDs.length; i++) {
-        const emojiEmbed = new EmbedBuilder() // Create webhook embeds
-          .setColor(client.embedColour)
-          .setTitle(`:${emojiInfo[i].name}:`)
-          .setThumbnail(emojiURLs[i])
-          .setFooter({ text: `Emoji ID: ${emojiIDs[i]}` });
+        if (!emojiInfo[i].animated) { // For not animated emojis:
+          const emojiEmbed = new EmbedBuilder() // Create webhook embeds
+            .setColor(client.embedColour)
+            .setTitle(`:${emojiInfo[i].name}:`)
+            .setThumbnail(emojiURLs[i])
+            .setFooter({ text: `Emoji ID: ${emojiIDs[i]}` });
 
-        await webhook.send({
-          // Send webhook messages
-          username: 'Zappy\'s Server Emojis',
-          avatarURL: client.user.displayAvatarURL(),
-          embeds: [emojiEmbed],
-        });
+          await webhook.send({
+            // Send webhook messages
+            username: 'Zappy\'s Server Emojis',
+            avatarURL: client.user.displayAvatarURL(),
+            embeds: [emojiEmbed],
+          });
+        }
+        else { // For animated emojis:
+          const emojiEmbed = new EmbedBuilder() // Create webhook embeds
+            .setColor(client.embedColour)
+            .setTitle(`:${emojiInfo[i].name}:`)
+            .setThumbnail(emojiURLs[i] + '.gif')
+            .setFooter({ text: `Emoji ID: ${emojiIDs[i]}` });
+
+          await webhook.send({
+            // Send webhook messages
+            username: 'Zappy\'s Server Emojis',
+            avatarURL: client.user.displayAvatarURL(),
+            embeds: [emojiEmbed],
+          });
+        }
       }
     }
     catch (error) {
