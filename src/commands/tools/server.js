@@ -95,7 +95,7 @@ module.exports = {
           const webhook = webhooks.find((wh) => wh.token);
 
           if (!webhook) {
-            return console.log('No wehook was found!');
+            return console.log('No webhook was found!');
           }
 
           await webhook.send({
