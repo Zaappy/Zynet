@@ -9,7 +9,7 @@ module.exports = {
 
       try {
         await command.execute(interaction, client);
-        console.log(`Command '${interaction}' executed successfully by ${interaction.user.tag}.`);
+        console.log(`Command '${interaction}' executed by ${interaction.user.tag}.`);
       }
       catch (error) {
         console.error(error);
