@@ -8,7 +8,7 @@ const { serverIP, dynmapURL } = process.env;
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('ip')
-    .setDescription('Gives the Minecraft Server IP.')
+    .setDescription('Gives the Minecraft Server IP')
     .setDefaultMemberPermissions(PermissionFlagsBits.SendTTSMessages),
 
   async execute(interaction, client) {
@@ -27,7 +27,7 @@ module.exports = {
         },
       )
       .setAuthor({
-        name: interaction.user.tag,
+        name: interaction.user.username,
         iconURL: interaction.user.displayAvatarURL(),
       })
       .setThumbnail(

@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('ping')
-    .setDescription('Shows your ping.'),
+    .setDescription('Shows your client ping'),
   async execute(interaction, client) {
     const message = await interaction.deferReply({
       fetchReply: true,
@@ -12,7 +12,7 @@ module.exports = {
       .setColor(client.embedColour)
       .setTitle('Pong!')
       .setAuthor({
-        name: interaction.user.tag,
+        name: interaction.user.username,
         iconURL: interaction.user.displayAvatarURL(),
       })
       .setThumbnail(

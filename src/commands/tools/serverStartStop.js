@@ -27,7 +27,7 @@ module.exports = {
           .setColor(0x97a7b1)
           .setTitle('Starting server...')
           .setAuthor({
-            name: interaction.user.tag,
+            name: interaction.user.username,
             iconURL: interaction.user.displayAvatarURL(),
           })
           .setThumbnail(
@@ -61,7 +61,7 @@ module.exports = {
             .setColor(0x547e3f)
             .setTitle('Server has started!')
             .setAuthor({
-              name: interaction.user.tag,
+              name: interaction.user.username,
               iconURL: interaction.user.displayAvatarURL(),
             })
             .setThumbnail(
@@ -112,7 +112,7 @@ module.exports = {
           .setColor(0xc5272a)
           .setTitle('Stopping server!')
           .setAuthor({
-            name: interaction.user.tag,
+            name: interaction.user.username,
             iconURL: interaction.user.displayAvatarURL(),
           })
           .setThumbnail(
